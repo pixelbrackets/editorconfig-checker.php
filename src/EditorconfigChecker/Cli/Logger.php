@@ -51,6 +51,19 @@ class Logger
     public function addError($message, $fileName = null, $lineNumber = null)
     {
         $this->errors[] = ['lineNumber' => $lineNumber, 'fileName' => $fileName, 'message' => $message];
+        printf('F');
+    }
+
+    /**
+     * Adds a notice to the logger
+     *
+     * Dummy method to add logic later, right now used for nice output only
+     *
+     * @param string $message
+     */
+    public function addNotice($message)
+    {
+        printf('.');
     }
 
     /**
@@ -58,6 +71,8 @@ class Logger
      */
     public function printErrors()
     {
+        printf(PHP_EOL . PHP_EOL);
+
         // only 1 error and no filename given = Fatal Error! (Eg. ".editorconfig not found!")
         if ($this->errors[0]['fileName'] === null && $this->countErrors() === 1) {
             printf('Fatal Error: %s' . PHP_EOL, $this->errors[0]['message']);

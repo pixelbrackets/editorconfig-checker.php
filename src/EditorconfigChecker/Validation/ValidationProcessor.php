@@ -36,6 +36,7 @@ class ValidationProcessor
      */
     public static function validateFile($rules, $file)
     {
+        Logger::getInstance()->addNotice($file);
         $content = file($file);
         $lastIndentSize = null;
 
